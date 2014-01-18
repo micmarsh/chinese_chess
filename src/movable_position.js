@@ -1,5 +1,4 @@
-
-var StartingPosition = require('./starting_position.js');
+var Position = require('./position.js');
 
 function MovablePosition(parent) {
     self = parent || new Position();
