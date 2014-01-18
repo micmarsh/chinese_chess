@@ -1,4 +1,5 @@
 var Board = require('./board.js');
+var c = require('./color.js')
 
 function Position() {
   var self = this;
@@ -56,7 +57,10 @@ function Position() {
   Object.defineProperties(this, {
     toMove: {
       get: function() { return toMove; },
-      set: function(color) { toMove = color; },
+      set: function(color) {
+        c.assertColor(color);
+        toMove = color;
+      },
       enumerable: false
     },
     place: { value: place, enumerable: false },
