@@ -14,7 +14,7 @@ describe('MovablePosition', function() {
     });
 
     it('checks a few moves', function () {
-        var chariotMoves = position.checkMove("0,0","0,2");
+        var chariotMoves = position.canMove("0,0","0,2");
         expect(chariotMoves).toBe(true);
     });
 })
