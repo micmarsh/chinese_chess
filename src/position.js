@@ -6,9 +6,14 @@ function Position() {
   var toMove;
 
   function place(piece, coordinates) {
-    this[coordinates] = piece;
+    self[coordinates] = piece;
     piece.square = this.BOARD[coordinates];
-    return this;
+    return self;
+  }
+
+  function remove(coordinates) {
+    delete self[coordinates];
+    return self;
   }
 
   function _import(position) {
@@ -63,6 +68,7 @@ function Position() {
       },
       enumerable: false
     },
+    remove: {value: remove, enumerable: false},
     place: { value: place, enumerable: false },
     'import': { value: _import, enumerable: false },
     isCheck: {
