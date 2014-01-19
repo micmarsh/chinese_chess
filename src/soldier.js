@@ -7,21 +7,21 @@ function Soldier(color) {
 
   self.getMoves = function(position) {
     var moves = [];
-    var forward = this.color === 'red' ? 'up' : 'down';
-    var continent = position.BOARD.continents[this.color];
-    if (continent[this.square.coordinates]) {
+    var forward = self.color === 'red' ? 'up' : 'down';
+    var continent = position.BOARD.continents[self.color];
+    if (continent[self.square.coordinates]) {
       var directions = [forward];
     } else {
       var directions = ['left', forward, 'right'];
     }
     for (var dir_index = 0; dir_index < directions.length; dir_index += 1) {
       var direction = directions[dir_index];
-      var target_square = this.square[direction];
+      var target_square = self.square[direction];
       if (!target_square) {
         continue;
       }
       if (!position[target_square.coordinates] ||
-        position[target_square.coordinates].color !== this.color) {
+        position[target_square.coordinates].color !== self.color) {
         moves.push(target_square.coordinates);
       }
     }

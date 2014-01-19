@@ -7,7 +7,7 @@ function Advisor(color) {
 
   self.getMoves = function(position) {
     var moves = [];
-    var palace = position.BOARD.palaces[this.color];
+    var palace = position.BOARD.palaces[self.color];
     var directions = [
       ['left', 'up'],
       ['up', 'right'],
@@ -16,15 +16,15 @@ function Advisor(color) {
     ];
     for (var dir_index = 0; dir_index < 4; dir_index += 1) {
       var direction = directions[dir_index];
-      if (!this.square[direction[0]] || !this.square[direction[1]]) {
+      if (!self.square[direction[0]] || !self.square[direction[1]]) {
         continue;
       }
-      var target_square = this.square[direction[0]][direction[1]];
+      var target_square = self.square[direction[0]][direction[1]];
       if (!palace[target_square.coordinates]) {
         continue;
       }
       if (!position[target_square.coordinates] ||
-        position[target_square.coordinates].color !== this.color) {
+        position[target_square.coordinates].color !== self.color) {
         moves.push(target_square.coordinates);
       }
     }

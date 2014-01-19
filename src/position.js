@@ -7,7 +7,7 @@ function Position() {
 
   function place(piece, coordinates) {
     self[coordinates] = piece;
-    piece.square = this.BOARD[coordinates];
+    piece.square = self.BOARD[coordinates];
     return self;
   }
 
@@ -19,10 +19,10 @@ function Position() {
   function _import(position) {
     var turn = position.toMove;
     for (var key in position) {
-      this.place(position[key], key)
+      self.place(position[key], key)
     }
     if (turn === 'red' || turn === 'black') {
-      this.toMove = position.toMove;
+      self.toMove = position.toMove;
     }
     return this;
   }

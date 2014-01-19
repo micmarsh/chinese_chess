@@ -11,13 +11,14 @@ function MovablePosition(parent) {
         var piece = self[from];
         if (Boolean(piece) && piece.color === self.toMove) {
             var moveList = piece.getMoves(from);
+            console.log(moveList);
             if (moveList.indexOf(to) !== -1) {
                 makeMove(from, to, true);
                 var result = !self.isCheck;
                 makeMove(to, from, true);
                 return result;
-            }
-        }
+            };
+        };
         return false;
     }
 
