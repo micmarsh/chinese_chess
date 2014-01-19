@@ -7,15 +7,12 @@ function MovablePosition(parent) {
         self.toMove = self.toMove === 'red'? 'black' : 'red';
     }
 
-    self.canMove = function (from, to) {
+    function canMove(from, to) {
         var piece = self[from];
-        console.log(piece);
         if (Boolean(piece) && piece.color === self.toMove) {
             var moveList = piece.getMoves(from);
             if (moveList.indexOf(to) !== -1) {
-                console.log(moveList);
                 makeMove(from, to, true);
-                console.log(to);
                 var result = !self.isCheck;
                 makeMove(to, from, true);
                 return result;
@@ -24,16 +21,19 @@ function MovablePosition(parent) {
         return false;
     }
 
-    function makeMove (from, to, internal) {
+    function makeMove(from, to, internal) {
         var piece = self[from];
         self.remove(from).place(piece, to);
         if(!internal)
             toggleTurn();
     }
 
-    self.makeMove = function (from, to) {
-        makeMove(from, to, false);
-    }
+    Object.defineProperties(self, {
+        canMove: {value: canMove, enumerable: false},
+        makeMove: {value: function (from, to) {
+            makeMove(from, to, false);
+        }, enumerable: false },
+    });
 
     return self;
 }
