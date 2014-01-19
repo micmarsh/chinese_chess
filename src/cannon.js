@@ -6,6 +6,7 @@ function Cannon(color) {
   self.type = 'Cannon';
 
   self.getMoves = function(position) {
+    var current_square;
     var moves = [];
     var directions = ['left', 'right', 'up', 'down'];
     for (var dir_index = 0; dir_index < directions.length; dir_index += 1) {
