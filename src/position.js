@@ -17,10 +17,13 @@ function Position() {
   }
 
   function _import(position) {
+    var turn = position.toMove;
     for (var key in position) {
       this.place(position[key], key)
     }
-    this.toMove = position.toMove;
+    if (turn === 'red' || turn === 'black') {
+      this.toMove = position.toMove;
+    }
     return this;
   }
 

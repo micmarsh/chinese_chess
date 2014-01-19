@@ -9,11 +9,14 @@ function MovablePosition(parent) {
 
     self.canMove = function (from, to) {
         var piece = self[from];
+        console.log(piece);
         if (Boolean(piece) && piece.color === self.toMove) {
             var moveList = piece.getMoves(from);
             if (moveList.indexOf(to) !== -1) {
+                console.log(moveList);
                 makeMove(from, to, true);
-                result = !self.isCheck;
+                console.log(to);
+                var result = !self.isCheck;
                 makeMove(to, from, true);
                 return result;
             }

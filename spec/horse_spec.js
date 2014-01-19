@@ -6,7 +6,7 @@ describe('Horse', function() {
   var position;
 
   beforeEach(function() {
-    horse = new Horse();
+    horse = new Horse('red');
     position = new Position();
   });
 
